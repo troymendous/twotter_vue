@@ -11,17 +11,20 @@
         </div>
     </div>
     <div class="user-profile__twoots-wrapper">
-      <div class="user-profile___twoot" v-for="twoot in user.twoots" :key="twoot.id">
-        {{ twoot.content }}
-      </div>
-
+      <TwootItem v-for="twoot in user.twoots" :key="twoot.id" :username="user.username" :twoot="twoot"/>
+        
     </div>
     </div>
 </template>
 
 <script>
+import TwootItem from "./TwootItem";
 
 export default {
+  components: {
+    TwootItem
+
+  },
   name: "UserProfile",
   data() {
     return {
