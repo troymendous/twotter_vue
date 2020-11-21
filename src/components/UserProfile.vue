@@ -20,6 +20,7 @@
 <script>
 import TwootItem from "./TwootItem";
 
+// registering component issue being named but not defined... 
 export default {
   components: {
     TwootItem
