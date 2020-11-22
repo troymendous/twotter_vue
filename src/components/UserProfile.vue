@@ -73,7 +73,7 @@ export default {
     this.followUser();
   },
   toggleFavourite(id) {
-    console.log('favourited Tweet #$(id)')
+    console.log(`favourited Tweet #${id}`)
   }
 }
 
