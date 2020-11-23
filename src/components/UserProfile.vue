@@ -106,13 +106,13 @@ export default {
 
   createNewTwoot() {
     if (this.newTwootContent && this.selectedTwootType !== 'draft') {
-      this.user.twoots.unshift( items, {
-        id: this.user.twoots.length + 1,
-        content: this.newTwootContent
-       })
+      this.user.twoots.unshift({
+  id: this.user.twoots.length + 1,
+  content: this.newTwootContent
+})
     }
 
-  },
+  }
 }
 
 </script>
