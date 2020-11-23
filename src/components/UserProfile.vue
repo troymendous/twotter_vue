@@ -155,4 +155,10 @@ h1 {
   display: flex;
   flex-direction: column;
 }
+
+button {
+  background-color: rgb(180, 144, 223);
+  border: none;
+}
+
 </style>
