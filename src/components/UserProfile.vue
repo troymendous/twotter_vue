@@ -26,6 +26,10 @@ export default {
     TwootItem
 
   },
+
+  // ^^ 
+
+  // naming this component for export
   name: "UserProfile",
   data() {
     return {
