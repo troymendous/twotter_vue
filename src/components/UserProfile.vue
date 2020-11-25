@@ -9,24 +9,8 @@
         <div class="user-profile__follower-count">
             <strong>Followers</strong> {{ followers }}
         </div>
-        <form action="" class="user-profile__create-twoot" @submit.prevent="createNewTwoot" :class="{'--exceeded': newTwootCharacterCount > 180}">
-          <label for="newTwoot"> <strong>New Twoot</strong>({{ newTwootCharacterCount }}/180)</label> 
-          <textarea name="" id="newTwoot" rows="4" v-model="newTwootContent"/>
-
-          <div class="user-profile__create-twoot-type">
-            <label for="newTwootType">
-              <strong>Type:</strong>
-            </label>
-            <select id="newTwootType" v-model="selectedTwootType">
-              <option :value="option.value" v-for="(option, index) in twootTypes" :key="index" >
-                {{ option.name }}
-              </option>
-            </select>
-          </div>
-          <button>
-            Twoot!
-          </button>
-        </form>
+        <create-twoot-panel @add-twoot="addTwoot"></create-twoot-panel>
+        
     </div>
     <div class="user-profile__twoots-wrapper">
       <TwootItem v-for="twoot in user.twoots" :key="twoot.id" :username="user.username" :twoot="twoot" @favourite="toggleFavourite"/>
@@ -37,11 +21,12 @@
 
 <script>
 import TwootItem from "./TwootItem";
+import CreateTwootPanel from "./CreateTwootPanel"
 
 // registering component issue being named but not defined... 
 export default {
   components: {
-    TwootItem
+    TwootItem, CreateTwootPanel
 
   },
 
@@ -51,12 +36,7 @@ export default {
   name: "UserProfile",
   data() {
     return {
-      newTwootContent: '',
-      selectedTwootType: 'instant',
-      twootTypes: [
-        { value: 'draft', name: 'Draft' },
-        { value: 'instant', name: 'Instant Twoot'}
-        ],
+      
       followers: 0,
       user: {
         id: 1,
@@ -73,23 +53,9 @@ export default {
     }
   },
 
-  watch: {
-    followers(newFollowerCount, oldFollowerCount) {
-      if (oldFollowerCount < newFollowerCount) {
-        console.log( `${this.user.username} has gained a follower!`)
+ 
 
-      }
-    
-    }
-
-  },
-
-  computed: {
-    newTwootCharacterCount() {
-      return this.newTwootContent.length;
-    }
-
-  },
+ 
 
 
   methods: {
@@ -105,16 +71,7 @@ export default {
     console.log(`favourited Tweet #${id}`)
   },
 
-  createNewTwoot() {
-    if (this.newTwootContent && this.selectedTwootType !== 'draft') {
-      this.user.twoots.unshift({
-  id: this.user.twoots.length + 1,
-  content: this.newTwootContent
-})
-this.newTwootContent = '';
-    }
-
-  }
+  
 }
 
 </script>
@@ -156,16 +113,7 @@ this.newTwootContent = '';
   display: flex;
   flex-direction: column;
 
-  &.--exceeded {
-    color: red;
-    border-color: red;
-    
-    button {
-      background-color: red;
-      border: none;
-      color: white;
-    }
-  }
+ 
 }
 
 }
