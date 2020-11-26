@@ -64,15 +64,7 @@ export default {
 
     }
   },
-  mounted() {
-    this.followUser();
-  },
-  toggleFavourite(id) {
-    console.log(`favourited Tweet #${id}`)
-  },
-
-  
-}
+};
 
 </script>
 
@@ -118,26 +110,14 @@ export default {
 
 }
 
-
-}
-
 .user-profile__twoots-wrapper {
   display: grid;
   grid-gap: 16px;
+  margin-bottom: auto;
 }
 
 
-
-
-
-
-
-
-
-
-button {
-  background-color: rgb(180, 144, 223);
-  border: none;
 }
+
 
 </style>

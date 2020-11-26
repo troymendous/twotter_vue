@@ -14,7 +14,7 @@
               </option>
             </select>
           </div>
-          <button>
+          <button class="btn">
             Twoot it!
           </button>
           </div>
@@ -58,53 +58,40 @@ export default {
 
 <style lang="scss" scoped>
 .create-twoot-panel {
-    margin-top: 20px;
-    padding: 20px 0;
+  margin-top: 20px;
+  padding: 20px 0;
+  display: flex;
+  flex-direction: column;
+  textarea {
+    border: 1px solid #DFE3E8;
+    border-radius: 5px;
+  }
+  .create-twoot-panel__submit {
     display: flex;
-    flex-direction: column;
-
-    textarea {
-        border: 1px solid #ddffee;
-        border-radius: 5px;
-    
-
-    .create-twoot-panel {
-        display: flex;
-        justify-content: space-between;
-    }
-    .create-twoot-panel__submit {
-        display: flex;
-        justify-content: space-between;
-    }
+    justify-content: space-between;
     .create-twoot-type {
-        padding: 10px 0;
-
+      padding: 10px 0;
     }
-
     button {
-        padding: 5px;
-        margin: auto 0;
-        border-radius: 5px;
-        border: none;
-        background-color: deeppink;
-        color: white;
-        font-weight: bold;
+      padding: 5px 20px;
+      margin: auto 0;
+      border-radius: 5px;
+      border: none;
+      background-color: deeppink;
+      color: white;
+      font-weight: bold;
+     
     }
-
-}
-
- &.--exceeded {
+  }
+  &.--exceeded {
     color: red;
     border-color: red;
-
     .create-twoot-panel__submit {
-        button {
-            background-color: red;
-            color: white;
-        }
+      button {
+        background-color: red;
+        color: white;
+      }
     }
-
-  
   }
 }
 </style>
