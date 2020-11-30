@@ -43,7 +43,7 @@ export default {
     if (state.newTwootContent && state.selectedTwootType !== 'draft') {
       ctx.emit('add-twoot', state.newTwootcontent); 
       state.newTwootContent = '';
-    }
+        }
     }
 
         return {

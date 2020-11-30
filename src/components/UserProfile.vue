@@ -1,43 +1,35 @@
 <template>
 <div class="user-profile">
     <div class="user-profile__user-panel">
-        <h1 class="user-profile__username">@{{ user.username }}</h1>
-        <div class="user-profile__admin-badge"  v-if="user.isAdmin">
+        <h1 class="user-profile__username">@{{ state.user.username }}</h1>
+        <div class="user-profile__admin-badge"  v-if="state.user.isAdmin">
           admin
         </div>
         
         <div class="user-profile__follower-count">
-            <strong>Followers</strong> {{ followers }}
+            <strong>Followers: </strong> {{ state.followers }}
         </div>
         <create-twoot-panel @add-twoot="addTwoot"></create-twoot-panel>
         
     </div>
     <div class="user-profile__twoots-wrapper">
-      <TwootItem v-for="twoot in user.twoots" :key="twoot.id" :username="user.username" :twoot="twoot" @favourite="toggleFavourite"/>
+      <TwootItem v-for="twoot in state.user.twoots" :key="twoot.id" :username="state.user.username" :twoot="twoot" @favourite="toggleFavourite"/>
         
     </div>
     </div>
 </template>
 
 <script>
+import { reactive } from 'vue';
 import TwootItem from "./TwootItem";
 import CreateTwootPanel from "./CreateTwootPanel"
-
-// registering component issue being named but not defined... 
+ 
 export default {
   components: {
-    TwootItem, CreateTwootPanel
-
-  },
-
-  // ^^ 
-
-  // naming this component for export
-  name: "UserProfile",
-  data() {
-    return {
-      
-      followers: 0,
+    TwootItem, CreateTwootPanel },
+    setup() {
+      const state = reactive ({
+         followers: 0,
       user: {
         id: 1,
         username: 'troymendous',
@@ -49,23 +41,22 @@ export default {
           { id: 1, content: 'Twotter is amazing!'},
           { id: 2, content: "Don't forget to like and subscribe"}
         ]
+      
       }
-    }
-  },
 
+      })
+    
+
+  function addTwoot(twoot) {
+    state.user.twoots.unshift( items: { id: state.user.twoots.length + 1, content: twoot});
+  }
  
-
- 
-
-
-  methods: {
-    followUser () {
-      this.followers++
-
+    return {
+      state,
+      addTwoot
+  }
     }
-  },
 };
-
 </script>
 
 <style lang="scss" scoped>
