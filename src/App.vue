@@ -54,8 +54,8 @@ export default {
 
 .navigation__user {
   font-weight: bold;
-}
-}
+    }
+  }
 
 
 }
