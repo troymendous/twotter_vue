@@ -48,7 +48,7 @@ export default {
     
 
   function addTwoot(twoot) {
-    state.user.twoots.unshift( items: { id: state.user.twoots.length + 1, content: twoot});
+    state.user.twoots.unshift({ id: state.user.twoots.length + 1, content: twoot});
   }
  
     return {
